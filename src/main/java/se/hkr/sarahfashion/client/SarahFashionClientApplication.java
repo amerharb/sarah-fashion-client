@@ -36,6 +36,12 @@ public class SarahFashionClientApplication implements CommandLineRunner {
         return scanner.nextLine();
     }
 
+    private String readAddress() {
+        System.out.println("Enter Customer Address");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
     private void getAllCustomer() {
         RestTemplate restTemplate = new RestTemplate();
         org.springframework.http.HttpHeaders headers = new HttpHeaders();
@@ -129,8 +135,8 @@ public class SarahFashionClientApplication implements CommandLineRunner {
                 }
                 case updateAddress: {
                     String ssn = readSsn();
-                    //TODO: read address
-                    updateCustomerAddress(ssn, "new address here WiP");
+                    String address = readAddress();
+                    updateCustomerAddress(ssn, address);
                     break;
                 }
                 case exit: {
