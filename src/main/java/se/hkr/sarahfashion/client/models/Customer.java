@@ -1,9 +1,7 @@
 package se.hkr.sarahfashion.client.models;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 
 public class Customer {
     @JsonProperty("ssn")
@@ -19,4 +17,14 @@ public class Customer {
 
     public enum GenderEnum {male, female}
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "ssn='" + ssn + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", gender=" + gender +
+                ", orders=" + orders +
+                '}';
+    }
 }
