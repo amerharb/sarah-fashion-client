@@ -21,18 +21,22 @@ public class SarahFashionClientApplication  implements CommandLineRunner{
 		RestTemplate restTemplate = new RestTemplate();
 		org.springframework.http.HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-		String resourceURL = "http://localhost:5006/customer/1111";
-		HttpEntity<String> entity = new HttpEntity<>(headers);
-		ResponseEntity<Customer> responseEntity = restTemplate.exchange(
-				resourceURL,
-				HttpMethod.GET,
-				entity,
-				Customer.class
-		);
+		try{
+			String resourceURL = "http://localhost:5006/customer/1111";
+			HttpEntity<String> entity = new HttpEntity<>(headers);
+			ResponseEntity<Customer> responseEntity = restTemplate.exchange(
+					resourceURL,
+					HttpMethod.GET,
+					entity,
+					Customer.class
+			);
 
-		if (responseEntity.getStatusCode() == HttpStatus.OK) {
-			System.out.println("OK");
-			System.out.println(responseEntity);
+			if (responseEntity.getStatusCode() == HttpStatus.OK) {
+				System.out.println("OK");
+				System.out.println(responseEntity);
+			}
+		} catch (Exception ex) {
+			System.out.println(ex.getMessage());
 		}
 	}
 }
