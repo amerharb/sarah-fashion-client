@@ -29,6 +29,12 @@ public class SarahFashionClientApplication implements CommandLineRunner {
         return Command.invalid;
     }
 
+    private String readSsn() {
+        System.out.println("Enter Customer SSN");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
     private void getAllCustomer() {
         RestTemplate restTemplate = new RestTemplate();
         org.springframework.http.HttpHeaders headers = new HttpHeaders();
@@ -97,7 +103,8 @@ public class SarahFashionClientApplication implements CommandLineRunner {
                     break;
                 }
                 case getCustomerBySsn: {
-                    getCustomer("1111");
+                    String ssn = readSsn();
+                    getCustomer(ssn);
                     break;
                 }
                 case exit: {
